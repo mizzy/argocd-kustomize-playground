@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
+  # Add a this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # The project the application belongs to.
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/mizzy/argocd-kustomize-playground.git
+    targetRevision: HEAD
+    path: kustomize-guestbook
+
+    # kustomize specific config
+    kustomize:
+      # Optional image name prefix
+      namePrefix: prod-
+      # Optional image tags passed to "kustomize edit set imagetag" is Kustomize 1 only.
+      imageTags:
+      - name: gcr.io/heptio-images/ks-guestbook-demo
+        value: "0.2"
+      # Optional images passed to "kustomize edit set image" is Kustomize 2 only.
+      images:
+      - gcr.io/heptio-images/ks-guestbook-demo:0.2
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true
+
+  # Ignore differences at the specified json pointers
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/replicas

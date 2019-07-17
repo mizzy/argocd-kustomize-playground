@@ -48,3 +48,32 @@ Change the password using the command:
 $ argocd account update-password
 ```
 
+
+## Create Application
+
+```
+$ kubectl apply -f application.yaml
+$ kubectl create namespace guestbook
+```
+
+## Sync (Deploy) The Application
+
+```
+$ argocd app get guestbook
+Name:               guestbook
+Project:            default
+Server:             https://kubernetes.default.svc
+Namespace:          guestbook
+URL:                https://localhost:8080/applications/guestbook
+Repo:               https://github.com/mizzy/argocd-kustomize-playground.git
+Target:             HEAD
+Path:               kustomize-guestbook
+Name Prefix:        prod-
+Sync Policy:        Automated (Prune)
+Sync Status:
+Health Status:
+```
+
+```
+$ argocd app sync guestbook
+```
