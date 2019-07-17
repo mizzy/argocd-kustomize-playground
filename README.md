@@ -5,6 +5,7 @@
 - [Argo CD - Declarative GitOps CD for Kubernetes](https://argoproj.github.io/argo-cd/)
 - [Getting Started - Argo CD - Declarative GitOps CD for Kubernetes](https://argoproj.github.io/argo-cd/getting_started/)
 - [argoproj/argocd-example-apps: Example Apps to Demonstrate Argo CD](https://github.com/argoproj/argocd-example-apps)
+- [Kustomize - Argo CD - Declarative GitOps CD for Kubernetes](https://argoproj.github.io/argo-cd/user-guide/kustomize/)
 
 ## Install Argo CD
 
