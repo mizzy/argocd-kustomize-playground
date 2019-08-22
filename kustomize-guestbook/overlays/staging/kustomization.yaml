@@ -8,4 +8,4 @@ resources:
 images:
 - name: gcr.io/heptio-images/ks-guestbook-demo
   newName: docker.io/mizzy/hello
-  newTag: "0.1"
+  newTag: "0.2"
