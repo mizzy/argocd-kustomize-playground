@@ -1,8 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: staging
-resources:
+bases:
 - ../../base
+resources:
 - namespace.yaml
 images:
 - name: gcr.io/heptio-images/ks-guestbook-demo
