@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: staging
 resources:
 - namespace.yaml
-- ../../base/*
+- ../../base/*.yaml
 images:
 - name: gcr.io/heptio-images/ks-guestbook-demo
   newName: docker.io/mizzy/hello
